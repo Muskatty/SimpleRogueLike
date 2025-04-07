@@ -8,10 +8,15 @@ set(SOURCES
     src/game.cpp
     src/main.cpp
     src/player.cpp
+    src/room.cpp
     src/mobs/mob.cpp
     src/mobs/goblin.cpp
     src/mobs/orc.cpp
     src/mobs/troll.cpp
+    src/rewards/item_reward.cpp
+    src/rewards/stat_reward.cpp
+    src/rewards/reward_factory.cpp
+    src/util/random.cpp
 )
 
 add_executable(Rogalik ${SOURCES})

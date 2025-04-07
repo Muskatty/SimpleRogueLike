@@ -16,7 +16,7 @@ enum battle_result {
 };
 
 int battle(Player* pl);
-int handle_action(Player* pl, Mob *e, std::string action);
+int handleAction(Player* pl, Mob *e, std::string action);
 void clear();
 
 #endif

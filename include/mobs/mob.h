@@ -16,12 +16,12 @@ public:
     
     virtual ~Mob() {};
 
-    int get_damaged(int damage);
+    int getDamaged(int damage);
     
-    int get_atk() {return atk;};
-    std::string get_name() {return name;};
-    int get_hp() {return hp;};
-    int get_max_hp() {return max_hp;};
+    int getAtk() {return atk;};
+    std::string getName() {return name;};
+    int getHp() {return hp;};
+    int getMaxHp() {return max_hp;};
 };
 
 #endif

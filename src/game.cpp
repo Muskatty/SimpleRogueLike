@@ -11,17 +11,17 @@ void clear() {
 
 void print_stats(Player *p, Mob *e) {
     //print names
-    JUSTIFY(p->get_name(), e->get_name());
+    JUSTIFY(p->getName(), e->getName());
 
     std::string t1, t2;
-    t1 ="HP: " + std::to_string(p->get_hp()) + "/" + std::to_string(p->get_max_hp());
-    t2 ="HP: " + std::to_string(e->get_hp()) + "/" + std::to_string(e->get_max_hp());
+    t1 ="HP: " + std::to_string(p->getHp()) + "/" + std::to_string(p->getMaxHp());
+    t2 ="HP: " + std::to_string(e->getHp()) + "/" + std::to_string(e->getMaxHp());
     JUSTIFY(t1, t2);
 
-    printf("LVL:%d %d/%d\n", p->get_lvl(), p->get_exp(), p->get_exp_bound());
+    printf("LVL:%d %d/%d\n", p->getLvl(), p->getExp(), p->getExpBound());
 
-    t1 = "ATK: " + std::to_string(p->get_atk());
-    t2 = "ATK: " + std::to_string(e->get_atk());
+    t1 = "ATK: " + std::to_string(p->getAtk());
+    t2 = "ATK: " + std::to_string(e->getAtk());
     JUSTIFY(t1, t2);
     printf("Choose an action!\n");
     printf("1.Attack\n");
@@ -29,18 +29,18 @@ void print_stats(Player *p, Mob *e) {
 }
 
 void give_exp(Player* player, Mob *enemy) {
-    int given_exp = (int)pow((double)enemy->get_max_hp(), 0.85);
-    player->earn_exp(given_exp);
+    int given_exp = (int)pow((double)enemy->getMaxHp(), 0.85);
+    player->earnExp(given_exp);
     return;
 }
 
 int battle(Player *player) {
-    if (player->get_hp() <= 0) {
+    if (player->getHp() <= 0) {
         printf("Can't fight! You're DEAD!\n");
         return 1;
     }
 
-    std::unique_ptr<Mob> enemy(MobFactory::createRandomMob(player->get_lvl()));
+    std::unique_ptr<Mob> enemy(MobFactory::createRandomMob(player->getLvl()));
     int res;
     std::string action;
     while(true) {
@@ -51,7 +51,7 @@ int battle(Player *player) {
             printf("Wrong option!\n");
             continue;
         }
-        res = handle_action(player, enemy.get(), action);
+        res = handleAction(player, enemy.get(), action);
         clear();
         if (res != 0) break;
     }
@@ -65,12 +65,12 @@ int battle(Player *player) {
 }
 
 //return 0 - nobody's dead, 1 - player is dead, -1 - mob is dead
-int handle_action(Player* pl, Mob *e, std::string action) {
+int handleAction(Player* pl, Mob *e, std::string action) {
     int a = stoi(action);
     int res = 0;
     switch(a) {
     case 1:
-        res = e->get_damaged(pl->get_atk());
+        res = e->getDamaged(pl->getAtk());
         break;
     case 2:
         pl->heal();
@@ -83,7 +83,7 @@ int handle_action(Player* pl, Mob *e, std::string action) {
         return res;
     }
 
-    res = pl->get_damaged(e->get_atk());
+    res = pl->getDamaged(e->getAtk());
 
     return -res;
 }

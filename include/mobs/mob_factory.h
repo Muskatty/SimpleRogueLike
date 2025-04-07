@@ -5,11 +5,12 @@
 #include "goblin.h"
 #include "orc.h"
 #include "troll.h"
+#include "util/random.h"
 #include <cstdlib>
 #include <ctime>
 
 enum MobTypes {
-    MOB_GOBLIN,
+    MOB_GOBLIN = 1,
     MOB_ORC,
     MOB_TROLL,
 };
@@ -17,8 +18,7 @@ enum MobTypes {
 class MobFactory {
 public:
     static Mob* createRandomMob(int lvl) {
-        std::srand(std::time(nullptr));
-        int rnd = std::rand() % std::min(3, lvl);
+        int rnd = Random::getRandomOneToN(std::min(3, lvl));
 
         switch (rnd)
         {
