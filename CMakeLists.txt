@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SOURCES
-    src/game.cpp
     src/main.cpp
     src/player.cpp
     src/room.cpp
@@ -16,6 +15,8 @@ set(SOURCES
     src/rewards/item_reward.cpp
     src/rewards/stat_reward.cpp
     src/rewards/reward_factory.cpp
+    src/processors/battle_processor.cpp
+    src/processors/room_processor.cpp
     src/util/random.cpp
 )
 

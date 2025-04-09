@@ -9,4 +9,4 @@ public:
     Goblin() : Mob("Goblin", 20, 3) {}    
 };
 
-#endif GOBLIN_H
+#endif

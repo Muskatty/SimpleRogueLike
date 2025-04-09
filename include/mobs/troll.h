@@ -9,4 +9,4 @@ public:
     Troll() : Mob("Troll", 50, 8) {}    
 };
 
-#endif TROLL_H
+#endif

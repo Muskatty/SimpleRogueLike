@@ -9,4 +9,4 @@ public:
     Orc() : Mob("Orc", 35, 6) {}    
 };
 
-#endif ORC_H
+#endif
