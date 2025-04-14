@@ -1,4 +1,5 @@
 #include "processors/battle_processor.h"
+#include "actions/action_factory.h"
 
 #define SCREEN_SIZE 50
 
@@ -25,8 +26,8 @@ void print_stats(Player *p, Mob *e) {
     t2 = "ATK: " + std::to_string(e->getAtk());
     JUSTIFY(t1, t2);
     printf("Choose an action!\n");
-    printf("1.Attack\n");
-    printf("2.Heal\n");
+    printf("%d.Attack\n", ActionType::ATTACK_ACTION);
+    printf("%d.Heal\n", ActionType::HEAL_ACTION);
 }
 
 //TODO: Maybe move it to battleProcessor?
@@ -67,25 +68,29 @@ int BattleProcessor::processBattle(Mob& enemy, Player& player) {
         return 1;
     }
 
-    int res;
-    std::string action;
-    while(true) {
+    std::string actionStr;
+    int actionType;
+    while(enemy.getHp() > 0 && player.getHp() > 0) {
         print_stats(&player, &enemy);
-        std::cin >> action;
-        if (action != "1" && action != "2") {
+        std::cin >> actionStr;
+        try {
+            actionType = std::stoi(actionStr);
+        }
+        catch (std::invalid_argument const& ex) {
             clear();
             printf("Wrong option!\n");
             continue;
         }
-        res = handleAction(&player, &enemy, action);
+        auto action = ActionFactory::createAction((ActionType)actionType);
+        action->execute(&enemy, &player);
         clear();
-        if (res != 0) break;
     }
-    if (res == PLAYER_DEAD) {
+
+    if (player.getHp() <= 0) {
         printf("You lost!\n");
     } else {
         printf("You won!\n");
         give_exp(&player, &enemy);
     }
-    return res;
+    return player.getHp() <= 0 ? PLAYER_DEAD : MOB_DEAD;
 }

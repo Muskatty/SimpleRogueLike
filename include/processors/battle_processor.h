@@ -5,8 +5,9 @@
 #include "mobs/mob_factory.h"
 
 enum battle_result {
-    PLAYER_DEAD = 1,
-    MOB_DEAD = -1
+    MOB_DEAD = -1,
+    ALL_ALIVE,
+    PLAYER_DEAD,
 };
 
 class BattleProcessor {

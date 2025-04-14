@@ -8,15 +8,23 @@ set(SOURCES
     src/main.cpp
     src/player.cpp
     src/room.cpp
+
+    src/actions/attack_action.cpp
+    src/actions/heal_action.cpp
+    src/actions/action_factory.cpp
+
     src/mobs/mob.cpp
     src/mobs/goblin.cpp
     src/mobs/orc.cpp
     src/mobs/troll.cpp
+
     src/rewards/item_reward.cpp
     src/rewards/stat_reward.cpp
     src/rewards/reward_factory.cpp
+
     src/processors/battle_processor.cpp
     src/processors/room_processor.cpp
+
     src/util/random.cpp
 )
 
