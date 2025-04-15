@@ -37,31 +37,6 @@ void give_exp(Player* player, Mob *enemy) {
     return;
 }
 
-//TODO: Change handleAction to separate Interface/Class
-//return 0 - nobody's dead, 1 - player is dead, -1 - mob is dead
-int handleAction(Player* pl, Mob *e, std::string action) {
-    int a = stoi(action);
-    int res = 0;
-    switch(a) {
-    case 1:
-        res = e->getDamaged(pl->getAtk());
-        break;
-    case 2:
-        pl->heal();
-        break;
-    default:
-        break;
-    }
-
-    if (res == -1) {
-        return res;
-    }
-
-    res = pl->getDamaged(e->getAtk());
-
-    return -res;
-}
-
 int BattleProcessor::processBattle(Mob& enemy, Player& player) {
     if (player.getHp() <= 0) {
         printf("Can't fight! You're DEAD!\n"); //Don't want to use print straight to console, maybe create separate class for logging later
@@ -81,8 +56,21 @@ int BattleProcessor::processBattle(Mob& enemy, Player& player) {
             printf("Wrong option!\n");
             continue;
         }
+
+        //validate action type
+        if (actionType >= ActionType::INVALID_ACTION || actionType < ActionType::ATTACK_ACTION) {
+            clear();
+            printf("Wrong option!\n");
+            continue;
+        }
+
         auto action = ActionFactory::createAction((ActionType)actionType);
         action->execute(&enemy, &player);
+        
+        //if mob is still alive it damages player
+        if (enemy.getHp() > 0) {
+            player.getDamaged(enemy.getAtk());
+        }
         clear();
     }
 

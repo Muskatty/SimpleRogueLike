@@ -6,6 +6,7 @@
 #include "orc.h"
 #include "troll.h"
 #include "util/random.h"
+#include "memory"
 #include <cstdlib>
 #include <ctime>
 
@@ -17,21 +18,7 @@ enum MobTypes {
 
 class MobFactory {
 public:
-    static Mob* createRandomMob(int lvl) {
-        int rnd = Random::getRandomOneToN(std::min(3, lvl));
-
-        switch (rnd)
-        {
-        case MOB_GOBLIN:
-            return new Goblin();
-        case MOB_ORC:
-            return new Orc();
-        case MOB_TROLL:
-            return new Troll();
-        default:
-            return new Goblin();
-        }
-    }
+    static std::unique_ptr<Mob> createRandomMob(int lvl);
 };
 
 #endif

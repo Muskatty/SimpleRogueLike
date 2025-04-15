@@ -17,6 +17,7 @@ set(SOURCES
     src/mobs/goblin.cpp
     src/mobs/orc.cpp
     src/mobs/troll.cpp
+    src/mobs/mob_factory.cpp
 
     src/rewards/item_reward.cpp
     src/rewards/stat_reward.cpp

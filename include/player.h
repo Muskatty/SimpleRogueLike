@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 
-#include "item.h"
+#include "items/item.h"
 #include <string>
 #include <unordered_map>
 #include <vector>

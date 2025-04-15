@@ -1,7 +1,7 @@
 #ifndef ITEM_REWARD_H
 #define ITEM_REWARD_H
 
-#include "item.h"
+#include "items/item.h"
 #include "reward.h"
 
 class ItemReward : public Reward {
