@@ -9,6 +9,9 @@ set(SOURCES
     src/player.cpp
     src/room.cpp
 
+    src/items/item_factory.cpp
+    src/items/weapons/weapon_factory.cpp
+
     src/actions/attack_action.cpp
     src/actions/heal_action.cpp
     src/actions/action_factory.cpp
