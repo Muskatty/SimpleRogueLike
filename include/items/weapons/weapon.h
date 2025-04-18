@@ -9,9 +9,11 @@ protected:
     WeaponStats stats;
 public:
     Weapon() = delete;
+    ~Weapon() {};
     Weapon(std::string _name, WeaponStats _stats) : Item(_name), stats(_stats) {};
 
-    int getDamage() {return stats.damage;}; //TODO: think really hard about differences of weapons, maybe add different modifiers
+    EquipmentSlot getSlot() const override {return EquipmentSlot::WEAPON;};
+    unsigned int getDamage() const {return stats.damage;}; //TODO: think really hard about differences of weapons, maybe add different modifiers
                                                     // dagger - add double hit mechanic
                                                     // hammer - add stun mechanic
                                                     // axe - add bleed mechanic

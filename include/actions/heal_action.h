@@ -5,5 +5,5 @@ public:
     HealAction() {};
     ~HealAction() {};
 
-    void execute(Mob *enemy, Player* player);
+    void execute(Mob *enemy, Player* player) override;
 };

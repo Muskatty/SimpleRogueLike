@@ -8,7 +8,6 @@ std::unique_ptr<Reward> RewardFactory::createRandomReward() {
         //TODO: add tables for reward types and reward values 
         return std::make_unique<StatReward>("ATK", 1);
     } else {
-        //Item item("Sword");
         auto item = ItemFactory::createRandomItem(1);
         return std::make_unique<ItemReward>(std::move(item));
     }

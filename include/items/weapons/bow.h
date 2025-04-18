@@ -5,6 +5,7 @@
 
 class Bow: public Weapon {
 public:
+    ~Bow() {};
     Bow(std::string _name, WeaponStats _stats) : Weapon(_name, _stats) {};
 };
 

@@ -38,3 +38,23 @@ void Player::increaseStat(std::string statName, int statBonus) {
 void Player::addItem(std::unique_ptr<Item> item) {
     this->inventory.push_back(std::move(item));
 }
+
+void Player::equipItem(std::unique_ptr<Item> item) {
+    if (!item) {
+        return;
+    }
+
+    EquipmentSlot slot = item->getSlot();
+    
+    std::unique_ptr<Item> prevItem = this->eq.equip(slot, std::move(item));
+
+    if (prevItem) {
+        this->addItem(std::move(prevItem));
+    }
+}
+
+unsigned int Player::getHitPower() const {
+    unsigned int res = this->getAtk();
+    res += this->eq.getDamage();
+    return res;
+}

@@ -5,5 +5,5 @@ void AttackAction::execute(Mob* enemy, Player* player) {
         return;
     }
 
-    enemy->getDamaged(player->getAtk());
+    enemy->getDamaged(player->getHitPower());
 }  

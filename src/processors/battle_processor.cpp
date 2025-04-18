@@ -22,7 +22,7 @@ void print_stats(Player *p, Mob *e) {
 
     printf("LVL:%d %d/%d\n", p->getLvl(), p->getExp(), p->getExpBound());
 
-    t1 = "ATK: " + std::to_string(p->getAtk());
+    t1 = "ATK: " + std::to_string(p->getHitPower());
     t2 = "ATK: " + std::to_string(e->getAtk());
     JUSTIFY(t1, t2);
     printf("Choose an action!\n");

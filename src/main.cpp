@@ -11,9 +11,12 @@
 int main() {
     std::unique_ptr<Player> pl(new Player("Maksik"));
     Random::initialize();
-    Room room(1);
     RoomProcessor roomProcessor;
-    roomProcessor.processRoom(room, *pl.get());
+
+    for (int i = 0; i < 5; i++) {
+        Room room(pl->getLvl());
+        roomProcessor.processRoom(room, *pl.get());
+    }
     // while(true) {
     //     if (battle(pl.get()) == 1) {
     //         printf("You're dead and cannot continue...\n");

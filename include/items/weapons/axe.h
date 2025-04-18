@@ -5,6 +5,7 @@
 
 class Axe: public Weapon {
 public:
+    ~Axe() {};
     Axe(std::string _name, WeaponStats _stats) : Weapon(_name, _stats) {};
 };
 

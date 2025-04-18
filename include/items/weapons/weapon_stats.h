@@ -12,8 +12,8 @@ struct WeaponMods {
 };
 
 struct WeaponStats {
-    int damage;
-    int critChance;
+    unsigned int damage;
+    unsigned int critChance;
     double critMulti;
 };
 
@@ -52,8 +52,8 @@ constexpr WeaponStats getWeaponStats(WeaponType type) {
         return {0, 0, 0};
     }
 
-    return {Math::roundToInt(baseStats.damage * weaponModsTable[type].damageModifier),
-            Math::roundToInt(baseStats.critChance * weaponModsTable[type].critChanceModifier),
+    return {Math::roundToUint(baseStats.damage * weaponModsTable[type].damageModifier),
+            Math::roundToUint(baseStats.critChance * weaponModsTable[type].critChanceModifier),
             baseStats.critMulti * weaponModsTable[type].critMultiModifier};
 }
 

@@ -3,6 +3,7 @@
 
 
 #include "items/item.h"
+#include "items/equipment.h"
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -23,6 +24,7 @@ private:
     unsigned int healPower = 4;
 
     std::vector<std::unique_ptr<Item>> inventory;
+    Equipment eq;
 public:
     Player() {};
     Player(std::string _name) : name(_name) {};
@@ -33,9 +35,12 @@ public:
     void earnExp(int exp);
     void increaseStat(std::string statName, int statBonus);
     void addItem(std::unique_ptr<Item> item);
+    void equipItem(std::unique_ptr<Item> item);
 
+    //this naming kinda sucks. calculate base atk + weapon atk
+    unsigned int getHitPower() const;
     unsigned int getAtk() const {return atk;};
-    unsigned int getHealPower() const {return atk;};
+    unsigned int getHealPower() const {return healPower;};
     std::string getName() const {return name;};
     
     int getHp() const {return hp;};
