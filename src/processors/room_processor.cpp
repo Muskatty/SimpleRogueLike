@@ -14,7 +14,7 @@ void RoomProcessor::processRoom(Room &room, Player &player) {
 
             int res = battleProcessor.processBattle(currentEnemy, player);
             if (res == PLAYER_DEAD) {
-                printf("LOL, you died");
+                printf("LOL, you died\n");
                 return;
             }
             //remove enemy from the vector if we won

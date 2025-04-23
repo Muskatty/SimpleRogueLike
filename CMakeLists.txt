@@ -16,6 +16,7 @@ set(SOURCES
     src/actions/attack_action.cpp
     src/actions/heal_action.cpp
     src/actions/action_factory.cpp
+    src/actions/inventory_action.cpp
 
     src/mobs/mob.cpp
     src/mobs/goblin.cpp

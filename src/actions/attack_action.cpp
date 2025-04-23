@@ -6,4 +6,10 @@ void AttackAction::execute(Mob* enemy, Player* player) {
     }
 
     enemy->getDamaged(player->getHitPower());
+
+    if (enemy->getHp() > 0) {
+        player->getDamaged(enemy->getAtk());
+    }
+
+    return;
 }  

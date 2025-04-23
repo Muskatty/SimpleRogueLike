@@ -26,8 +26,12 @@ private:
     std::vector<std::unique_ptr<Item>> inventory;
     Equipment eq;
 public:
-    Player() {};
-    Player(std::string _name) : name(_name) {};
+    Player() {
+        inventory.reserve(20);
+    };
+    Player(std::string _name) : name(_name) {
+        inventory.reserve(20);
+    };
     
     //Get damaged by x damage, if hp is above 0 return 0, else return -1
     int getDamaged(int damage);
@@ -41,6 +45,7 @@ public:
     unsigned int getHitPower() const;
     unsigned int getAtk() const {return atk;};
     unsigned int getHealPower() const {return healPower;};
+    std::vector<Item*> getInventory() const;
     std::string getName() const {return name;};
     
     int getHp() const {return hp;};

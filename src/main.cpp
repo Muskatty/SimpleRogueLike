@@ -13,7 +13,7 @@ int main() {
     Random::initialize();
     RoomProcessor roomProcessor;
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5 && pl->getHp() > 0; i++) {
         Room room(pl->getLvl());
         roomProcessor.processRoom(room, *pl.get());
     }

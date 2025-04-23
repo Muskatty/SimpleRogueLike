@@ -6,4 +6,10 @@ void HealAction::execute(Mob* enemy, Player* player) {
     }
 
     player->heal();
+
+    if (enemy->getHp() > 0) {
+        player->getDamaged(enemy->getAtk());
+    }
+
+    return;
 }

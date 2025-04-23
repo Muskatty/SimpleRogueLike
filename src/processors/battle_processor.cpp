@@ -26,8 +26,9 @@ void print_stats(Player *p, Mob *e) {
     t2 = "ATK: " + std::to_string(e->getAtk());
     JUSTIFY(t1, t2);
     printf("Choose an action!\n");
-    printf("%d.Attack\n", ActionType::ATTACK_ACTION);
-    printf("%d.Heal\n", ActionType::HEAL_ACTION);
+    printf("%d.Attack\n",  static_cast<int>(ActionType::ATTACK_ACTION));
+    printf("%d.Heal\n",  static_cast<int>(ActionType::HEAL_ACTION));
+    printf("%d.Check inventory\n", static_cast<int>(ActionType::INVENTORY_ACTION));
 }
 
 //TODO: Maybe move it to battleProcessor?
@@ -67,10 +68,6 @@ int BattleProcessor::processBattle(Mob& enemy, Player& player) {
         auto action = ActionFactory::createAction((ActionType)actionType);
         action->execute(&enemy, &player);
         
-        //if mob is still alive it damages player
-        if (enemy.getHp() > 0) {
-            player.getDamaged(enemy.getAtk());
-        }
         clear();
     }
 

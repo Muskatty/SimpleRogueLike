@@ -58,3 +58,14 @@ unsigned int Player::getHitPower() const {
     res += this->eq.getDamage();
     return res;
 }
+
+std::vector<Item*> Player::getInventory() const {
+    std::vector<Item*> res;
+    res.reserve(inventory.size());
+    
+    for (auto &ptr : inventory) {
+        res.push_back(ptr.get());
+    }
+
+    return res;
+}

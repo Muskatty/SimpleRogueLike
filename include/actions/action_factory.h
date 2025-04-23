@@ -3,10 +3,12 @@
 
 #include "actions/attack_action.h"
 #include "actions/heal_action.h"
+#include "actions/inventory_action.h"
 
 enum ActionType {
     ATTACK_ACTION = 1,
     HEAL_ACTION,
+    INVENTORY_ACTION,
     INVALID_ACTION
 };
 
