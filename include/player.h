@@ -47,6 +47,7 @@ public:
     unsigned int getHealPower() const {return healPower;};
     std::vector<Item*> getInventory() const;
     std::string getName() const {return name;};
+    Item* getItem(EquipmentSlot slot);
     
     int getHp() const {return hp;};
     int getMaxHp() const {return maxHp;};

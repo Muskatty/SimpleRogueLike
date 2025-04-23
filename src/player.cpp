@@ -69,3 +69,7 @@ std::vector<Item*> Player::getInventory() const {
 
     return res;
 }
+
+Item* Player::getItem(EquipmentSlot slot) {
+    return this->eq.getItem(slot);
+}

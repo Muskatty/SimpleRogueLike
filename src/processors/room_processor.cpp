@@ -25,4 +25,6 @@ void RoomProcessor::processRoom(Room &room, Player &player) {
         printf("You completed the room and got rewarded with:\n%s\n",reward->getDescription().c_str());
         reward->applyReward(player);
     }
+
+    return;
 }

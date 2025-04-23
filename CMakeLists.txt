@@ -32,6 +32,7 @@ set(SOURCES
     src/processors/room_processor.cpp
 
     src/util/random.cpp
+    src/util/console.cpp
 )
 
 add_executable(Rogalik ${SOURCES})

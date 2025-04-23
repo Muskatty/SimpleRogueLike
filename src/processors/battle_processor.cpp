@@ -1,15 +1,6 @@
 #include "processors/battle_processor.h"
 #include "actions/action_factory.h"
-
-#define SCREEN_SIZE 50
-
-//Macro to print string "a  ...  b" of length SCREEN_SIZE
-#define JUSTIFY(a, b) printf("%s%*s\n",a.c_str(), (int)(SCREEN_SIZE - a.length()), b.c_str())
-
-void clear() {
-    // CSI[2J clears screen, CSI[H moves the cursor to top-left corner
-    printf("\x1B[2J\x1B[H");
-}
+#include "util/concole.h"
 
 void print_stats(Player *p, Mob *e) {
     //print names

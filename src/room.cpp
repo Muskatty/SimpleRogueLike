@@ -11,7 +11,7 @@ void Room::generateRoom(int lvl) {
         unsigned int mob_number = Random::getRandomOneToN(5);
         for (int i = 0; i < mob_number; i++) {
             auto mob = MobFactory::createRandomMob(lvl);
-            this->enemies.push_back(std::move(mob)); //Seems sloppy, check for memory leaks
+            this->enemies.push_back(std::move(mob));
         }
     } else { //Trader room
         //do nothing... yet
